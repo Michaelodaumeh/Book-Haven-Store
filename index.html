@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Book Haven - Your Literary Paradise. Discover our curated collection of books, magazines, and literary accessories. Shop online with fast delivery and personalized service.">
+<meta name="keywords" content="bookstore, books, online bookstore, literary paradise, book haven, reading, books online, magazines, literary accessories">
+<meta name="author" content="Book Haven Bookstore">
+<meta name="robots" content="index, follow">
+<title>Home - Book Haven | Your Literary Paradise</title>
+<link rel="stylesheet" href="modern-ecommerce.css">
+<link rel="preload" href="image/Logo.jpg" as="image">
+<link rel="icon" type="image/jpeg" href="image/Logo.jpg">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="modern-header">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-content">
+          <div class="contact-info">
+            <span>📞 (555) 123-4567</span>
+            <span>✉️ info@bookhaven.com</span>
+          </div>
+          <div class="top-links">
+            <a href="#">Track Order</a>
+            <a href="#">Help</a>
+            <a href="#">Sign In</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header -->
+    <div class="main-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="hamburger-menu" id="hamburgerMenu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          
+          <div class="branding">
+            <img src="image/Logo.jpg" alt="Book Haven Bookstore" class="logo">
+            <div class="brand-text">
+              <h1>Book Haven</h1>
+              <span class="tagline">Your Literary Paradise</span>
+            </div>
+          </div>
+          
+          <div class="header-nav">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="gallery.html" class="nav-link">Shop</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="custom.html" class="nav-link">Community</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3>Navigation</h3>
+        <button class="close-sidebar" onclick="toggleMenu()">&times;</button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-link active">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-text">Home</span>
+        </a>
+        <a href="gallery.html" class="nav-link">
+          <span class="nav-icon">📚</span>
+          <span class="nav-text">Shop</span>
+        </a>
+        <a href="about.html" class="nav-link">
+          <span class="nav-icon">ℹ️</span>
+          <span class="nav-text">About Us</span>
+        </a>
+        <a href="custom.html" class="nav-link">
+          <span class="nav-icon">👥</span>
+          <span class="nav-text">Community</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMenu()"></div>
+
+  </header>
+
+  <main class="main-content" id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Welcome to Book Haven</h1>
+          <p>Your Literary Paradise - Discover our carefully curated collection of books, magazines, and literary accessories</p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">10,000+</span>
+              <span class="stat-label">Books Available</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Categories</span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a href="gallery.html" class="btn btn-primary">Shop Now</a>
+            <a href="about.html" class="btn btn-secondary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promotions Section -->
+    <section class="promotions-section">
+      <div class="container">
+        <h2>Current Promotions</h2>
+        <div class="promotions-grid">
+          <div class="promo-card">
+            <div class="promo-icon">🎁</div>
+            <h3>Buy 2 Get 1 Free</h3>
+            <p>Mix and match any books from our fiction collection</p>
+            <span class="promo-code">Code: BUY2GET1</span>
+          </div>
+          <div class="promo-card">
+            <div class="promo-icon">⭐</div>
+            <h3>20% Off Bestsellers</h3>
+            <p>Save on our most popular titles and trending books</p>
+            <span class="promo-code">Code: BESTSELLER20</span>
+          </div>
+          <div class="promo-card">
+            <div class="promo-icon">🚚</div>
+            <h3>Free Shipping</h3>
+            <p>Free delivery on orders above $50</p>
+            <span class="promo-code">Code: FREESHIP50</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+      <div class="container">
+        <h2>Shop by Category</h2>
+        <div class="categories-grid">
+          <div class="category-card">
+            <div class="category-image">
+              <img src="image/Client3_Book1.jpg" alt="Fiction Books">
+            </div>
+            <div class="category-info">
+              <h3>Fiction</h3>
+              <p>Explore our collection of novels, short stories, and literary fiction</p>
+              <a href="gallery.html" class="btn btn-outline">Browse Fiction</a>
+            </div>
+          </div>
+          <div class="category-card">
+            <div class="category-image">
+              <img src="image/Client3_Magazine1.jpg" alt="Magazines">
+            </div>
+            <div class="category-info">
+              <h3>Magazines</h3>
+              <p>Stay updated with the latest magazines on travel, food, and lifestyle</p>
+              <a href="gallery.html" class="btn btn-outline">Browse Magazines</a>
+            </div>
+          </div>
+          <div class="category-card">
+            <div class="category-image">
+              <img src="image/Client3_ToteBag.jpg" alt="Accessories">
+            </div>
+            <div class="category-info">
+              <h3>Accessories</h3>
+              <p>Complete your reading experience with our literary accessories</p>
+              <a href="gallery.html" class="btn btn-outline">Browse Accessories</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="container">
+        <h2>Why Choose Book Haven?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Curated Selection</h3>
+            <p>Hand-picked books and magazines from trusted publishers and authors</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🚚</div>
+            <h3>Fast Delivery</h3>
+            <p>Quick and reliable shipping to get your books to you as soon as possible</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💝</div>
+            <h3>Loyalty Rewards</h3>
+            <p>Earn points with every purchase and redeem them for exclusive benefits</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Personalized Service</h3>
+            <p>Get personalized book recommendations based on your reading preferences</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <form id="subscribe">
+        <label for="newsletter-email">Subscribe to our newsletter:</label>
+        <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required>
+        <button type="button" class="subscribe-button">Subscribe</button>
+      </form>
+      <p>Follow us on social media:
+        <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a> | <a href="#">YouTube</a>
+      </p>
+    </div>
+  </footer>
+
+<script src="shared.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
