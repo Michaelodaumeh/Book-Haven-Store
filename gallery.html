@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - Book Haven</title>
+<link rel="stylesheet" href="modern-ecommerce.css">
+</head>
+<body>
+  <header class="modern-header">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-content">
+          <div class="contact-info">
+            <span>📞 (555) 123-4567</span>
+            <span>✉️ info@bookhaven.com</span>
+          </div>
+          <div class="top-links">
+            <a href="#">Track Order</a>
+            <a href="#">Help</a>
+            <a href="#">Sign In</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header -->
+    <div class="main-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="header-left">
+            <div class="hamburger-menu" id="hamburgerMenu" onclick="toggleMenu()">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="branding">
+              <img src="image/Logo.jpg" alt="Book Haven Bookstore" class="logo">
+              <div class="brand-text">
+                <h1>Book Haven</h1>
+                <span class="tagline">Your Literary Paradise</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="header-center">
+            <div class="search-container">
+              <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search books, authors, genres...">
+                <button id="searchBtn" class="search-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="user-actions">
+              <button class="action-btn wishlist-btn" id="view-wishlist">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6053C22.3095 9.93789 22.4518 9.22248 22.4518 8.5C22.4518 7.77752 22.3095 7.06211 22.0329 6.39467C21.7563 5.72723 21.351 5.1208 20.84 4.61Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="btn-text">Wishlist</span>
+                <span class="badge" id="wishlist-count">0</span>
+              </button>
+              
+              <button class="action-btn cart-btn" id="view-cart">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="btn-text">Cart</span>
+                <span class="badge" id="cart-count">0</span>
+              </button>
+              
+              <button class="action-btn user-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="btn-text">Account</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="main-navigation">
+      <div class="container">
+        <div class="nav-content">
+          <div class="nav-categories">
+            <button class="category-btn active" data-category="all">All Books</button>
+            <button class="category-btn" data-category="fiction">Fiction</button>
+            <button class="category-btn" data-category="non-fiction">Non-Fiction</button>
+            <button class="category-btn" data-category="magazines">Magazines</button>
+            <button class="category-btn" data-category="accessories">Accessories</button>
+          </div>
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gallery.html" class="active">Shop</a>
+            <a href="about.html">About</a>
+            <a href="custom.html">Community</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3>Menu</h3>
+        <button class="close-sidebar" onclick="toggleMenu()">&times;</button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-link">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-text">Home</span>
+        </a>
+        <a href="gallery.html" class="nav-link active">
+          <span class="nav-icon">📚</span>
+          <span class="nav-text">Shop</span>
+        </a>
+        <a href="about.html" class="nav-link">
+          <span class="nav-icon">ℹ️</span>
+          <span class="nav-text">About Us</span>
+        </a>
+        <a href="custom.html" class="nav-link">
+          <span class="nav-icon">👥</span>
+          <span class="nav-text">Community</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMenu()"></div>
+
+    <!-- Cart Modal -->
+    <div class="cart" id="cart" style="display: none;">
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="close-cart-button" onclick="document.getElementById('cart').style.display='none'">&times;</button>
+      </div>
+      <div class="cart-content">
+        <div id="cartList" class="cart-items"></div>
+        <div class="cart-summary" id="cartSummary" style="display: none;">
+          <div class="cart-totals">
+            <div class="total-line">
+              <span>Subtotal:</span>
+              <span id="cartSubtotal">$0.00</span>
+            </div>
+            <div class="total-line">
+              <span>Shipping:</span>
+              <span id="cartShipping">$5.99</span>
+            </div>
+            <div class="total-line total-final">
+              <span>Total:</span>
+              <span id="cartTotal">$0.00</span>
+            </div>
+          </div>
+          <div class="cart-actions">
+            <button class="btn btn-secondary clear-cart-btn" onclick="clearCart()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M3 6H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              Clear Cart
+            </button>
+            <button class="btn btn-primary checkout-btn" onclick="proceedToCheckout()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              Proceed to Checkout
+            </button>
+          </div>
+        </div>
+        <div class="cart-empty" id="cartEmpty">
+          <div class="empty-cart-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+              <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Your cart is empty</h3>
+          <p>Looks like you haven't added any items to your cart yet.</p>
+          <button class="btn btn-primary" onclick="document.getElementById('cart').style.display='none'">Continue Shopping</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div class="wishlist" id="wishlist" style="display: none;">
+      <div class="wishlist-header">
+        <h2>Your Wishlist</h2>
+        <button class="close-wishlist-button" onclick="document.getElementById('wishlist').style.display='none'">&times;</button>
+      </div>
+      <div class="wishlist-content">
+        <div id="wishlistList" class="wishlist-items"></div>
+        <div class="wishlist-empty" id="wishlistEmpty">
+          <div class="empty-wishlist-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+              <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6053C22.3095 9.93789 22.4518 9.22248 22.4518 8.5C22.4518 7.77752 22.3095 7.06211 22.0329 6.39467C21.7563 5.72723 21.351 5.1208 20.84 4.61Z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Your wishlist is empty</h3>
+          <p>Looks like you haven't added any items to your wishlist yet.</p>
+          <button class="btn btn-primary" onclick="document.getElementById('wishlist').style.display='none'">Continue Shopping</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Discover Your Next Favorite Read</h1>
+          <p>Explore our carefully curated collection of books, magazines, and literary accessories</p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">10,000+</span>
+              <span class="stat-label">Books Available</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Online Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters and Sort -->
+    <section class="filters-section">
+      <div class="container">
+        <div class="filters-content">
+          <div class="filter-group">
+            <label>Sort by:</label>
+            <select id="sortSelect">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="newest">Newest First</option>
+              <option value="popular">Most Popular</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Price Range:</label>
+            <input type="range" id="priceRange" min="0" max="50" value="50" class="price-slider">
+            <span class="price-display">$0 - $<span id="maxPrice">50</span></span>
+          </div>
+          <div class="view-toggle">
+            <button class="view-btn active" data-view="grid">Grid</button>
+            <button class="view-btn" data-view="list">List</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section">
+      <div class="container">
+        <div class="products-header">
+          <h2>Our Collection</h2>
+          <div class="results-count">
+            <span id="resultsCount">9 products found</span>
+          </div>
+        </div>
+        <div class="products-grid" id="productsGrid">
+          <div class="product-card" data-category="fiction" data-price="25">
+            <div class="product-image">
+              <img src="image/Client3_Book1.jpg" alt="Brie Mine 4Ever" class="book-image">
+              <div class="product-badges">
+                <span class="badge new">New</span>
+                <span class="badge sale">-20%</span>
+              </div>
+              <div class="product-actions">
+                <button class="action-btn quick-view" title="Quick View">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+                <button class="action-btn wishlist-btn" title="Add to Wishlist">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6053C22.3095 9.93789 22.4518 9.22248 22.4518 8.5C22.4518 7.77752 22.3095 7.06211 22.0329 6.39467C21.7563 5.72723 21.351 5.1208 20.84 4.61Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Brie Mine 4Ever</h3>
+              <p class="product-description">A delightful book for cheese lovers</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star">★</span>
+                </div>
+                <span class="rating-count">(24)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">$20.00</span>
+                <span class="original-price">$25.00</span>
+              </div>
+              <button class="add-to-cart-btn" data-item="Brie Mine 4Ever">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          <div class="product-card" data-category="fiction" data-price="20">
+            <div class="product-image">
+              <img src="image/Client3_Book2.jpg" alt="Glory Riders" class="book-image">
+              <div class="product-badges">
+                <span class="badge new">New</span>
+              </div>
+              <div class="product-actions">
+                <button class="action-btn quick-view" title="Quick View">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+                <button class="action-btn wishlist-btn" title="Add to Wishlist">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6053C22.3095 9.93789 22.4518 9.22248 22.4518 8.5C22.4518 7.77752 22.3095 7.06211 22.0329 6.39467C21.7563 5.72723 21.351 5.1208 20.84 4.61Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Glory Riders</h3>
+              <p class="product-description">A book about bikers</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                </div>
+                <span class="rating-count">(18)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">$20.00</span>
+              </div>
+              <button class="add-to-cart-btn" data-item="Glory Riders">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          <div class="product-card" data-category="fiction" data-price="30">
+            <div class="product-image">
+              <img src="image/Client3_Book3.jpg" alt="Sorcerer's Shadowed Chronicles" class="book-image">
+              <div class="product-badges">
+                <span class="badge new">New</span>
+                <span class="badge sale">-10%</span>
+              </div>
+              <div class="product-actions">
+                <button class="action-btn quick-view" title="Quick View">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+                <button class="action-btn wishlist-btn" title="Add to Wishlist">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6053C22.3095 9.93789 22.4518 9.22248 22.4518 8.5C22.4518 7.77752 22.3095 7.06211 22.0329 6.39467C21.7563 5.72723 21.351 5.1208 20.84 4.61Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Sorcerer's Shadowed Chronicles</h3>
+              <p class="product-description">A fantasy book</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star">★</span>
+                </div>
+                <span class="rating-count">(32)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">$27.00</span>
+                <span class="original-price">$30.00</span>
+              </div>
+              <button class="add-to-cart-btn" data-item="Sorcerer's Shadowed Chronicles">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          <div class="product-card" data-category="magazines" data-price="15">
+            <div class="product-image">
+              <img src="image/Client3_Magazine1.jpg" alt="Ball" class="book-image">
+              <div class="product-badges">
+                <span class="badge new">New</span>
+              </div>
+              <div class="product-actions">
+                <button class="action-btn quick-view" title="Quick View">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+                <button class="action-btn wishlist-btn" title="Add to Wishlist">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6053C22.3095 9.93789 22.4518 9.22248 22.4518 8.5C22.4518 7.77752 22.3095 7.06211 22.0329 6.39467C21.7563 5.72723 21.351 5.1208 20.84 4.61Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Ball</h3>
+              <p class="product-description">A magazine about pickleball</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star">★</span>
+                </div>
+                <span class="rating-count">(12)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">$15.00</span>
+              </div>
+              <button class="add-to-cart-btn" data-item="Ball">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          <div class="product-card" data-category="magazines" data-price="35">
+            <div class="product-image">
+              <img src="image/Client3_Magazine2.jpg" alt="Travel" class="book-image">
+              <div class="product-badges">
+                <span class="badge new">New</span>
+                <span class="badge sale">-15%</span>
+              </div>
+              <div class="product-actions">
+                <button class="action-btn quick-view" title="Quick View">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+                <button class="action-btn wishlist-btn" title="Add to Wishlist">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6053C22.3095 9.93789 22.4518 9.22248 22.4518 8.5C22.4518 7.77752 22.3095 7.06211 22.0329 6.39467C21.7563 5.72723 21.351 5.1208 20.84 4.61Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Travel</h3>
+              <p class="product-description">A magazine for travelers</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                </div>
+                <span class="rating-count">(28)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">$29.75</span>
+                <span class="original-price">$35.00</span>
+              </div>
+              <button class="add-to-cart-btn" data-item="Travel">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          <div class="product-card" data-category="magazines" data-price="15">
+            <div class="product-image">
+              <img src="image/Client3_Magazine3.jpg" alt="Eat" class="book-image">
+              <div class="product-badges">
+                <span class="badge new">New</span>
+              </div>
+              <div class="product-actions">
+                <button class="action-btn quick-view" title="Quick View">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+                <button class="action-btn wishlist-btn" title="Add to Wishlist">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6053C22.3095 9.93789 22.4518 9.22248 22.4518 8.5C22.4518 7.77752 22.3095 7.06211 22.0329 6.39467C21.7563 5.72723 21.351 5.1208 20.84 4.61Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Eat</h3>
+              <p class="product-description">A magazine for foodies</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star">★</span>
+                </div>
+                <span class="rating-count">(19)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">$15.00</span>
+              </div>
+              <button class="add-to-cart-btn" data-item="Eat">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          <div class="product-card" data-category="accessories" data-price="30">
+            <div class="product-image">
+              <img src="image/Client3_ToteBag.jpg" alt="All I DO IS READ READ READ" class="book-image">
+              <div class="product-badges">
+                <span class="badge new">New</span>
+                <span class="badge sale">-25%</span>
+              </div>
+              <div class="product-actions">
+                <button class="action-btn quick-view" title="Quick View">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+                <button class="action-btn wishlist-btn" title="Add to Wishlist">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6053C22.3095 9.93789 22.4518 9.22248 22.4518 8.5C22.4518 7.77752 22.3095 7.06211 22.0329 6.39467C21.7563 5.72723 21.351 5.1208 20.84 4.61Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">All I DO IS READ READ READ</h3>
+              <p class="product-description">A canvas tote bag with black lettering</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                </div>
+                <span class="rating-count">(41)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">$22.50</span>
+                <span class="original-price">$30.00</span>
+              </div>
+              <button class="add-to-cart-btn" data-item="All I DO IS READ READ READ">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          <div class="product-card" data-category="accessories" data-price="20">
+            <div class="product-image">
+              <img src="image/Client3_Notebook.jpg" alt="Book Haven Bookstore" class="book-image">
+              <div class="product-badges">
+                <span class="badge new">New</span>
+              </div>
+              <div class="product-actions">
+                <button class="action-btn quick-view" title="Quick View">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+                <button class="action-btn wishlist-btn" title="Add to Wishlist">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6053C22.3095 9.93789 22.4518 9.22248 22.4518 8.5C22.4518 7.77752 22.3095 7.06211 22.0329 6.39467C21.7563 5.72723 21.351 5.1208 20.84 4.61Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Book Haven Bookstore</h3>
+              <p class="product-description">A notebook with text on the cover</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star">★</span>
+                </div>
+                <span class="rating-count">(15)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">$20.00</span>
+              </div>
+              <button class="add-to-cart-btn" data-item="Book Haven Bookstore">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          <div class="product-card" data-category="accessories" data-price="10">
+            <div class="product-image">
+              <img src="image/Client3_Stickers.jpg" alt="Four set Book Haven" class="book-image">
+              <div class="product-badges">
+                <span class="badge new">New</span>
+              </div>
+              <div class="product-actions">
+                <button class="action-btn quick-view" title="Quick View">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+                <button class="action-btn wishlist-btn" title="Add to Wishlist">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7563 11.2728 22.0329 10.6053C22.3095 9.93789 22.4518 9.22248 22.4518 8.5C22.4518 7.77752 22.3095 7.06211 22.0329 6.39467C21.7563 5.72723 21.351 5.1208 20.84 4.61Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Four set Book Haven</h3>
+              <p class="product-description">A set of four Book Haven stickers</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                </div>
+                <span class="rating-count">(8)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">$10.00</span>
+              </div>
+              <button class="add-to-cart-btn" data-item="Four set Book Haven">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V19C17 19.6 16.6 20 16 20H8C7.4 20 7 19.6 7 19V13M17 13H7" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        
+        <!-- Load More Button -->
+        <div class="load-more-section">
+          <button class="load-more-btn">Load More Products</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <form id="subscribe">
+        <label for="newsletter-email">Subscribe to our newsletter:</label>
+        <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required>
+        <button type="button" class="subscribe-button">Subscribe</button>
+      </form>
+      <p>Follow us on social media:
+        <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a> | <a href="#">YouTube</a>
+      </p>
+    </div>
+  </footer>
+<script src="shared.js"></script>
+<script src="gallery.js"></script>
+</body>
+</html>
